@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stockholm/src/button.dart';
-import 'package:stockholm/src/menu.dart';
-import 'package:stockholm/src/menu_items.dart';
+import 'package:stockholm/stockholm.dart';
 
 class StockholmDropdownButton<T> extends StatefulWidget {
   const StockholmDropdownButton({
@@ -10,7 +8,7 @@ class StockholmDropdownButton<T> extends StatefulWidget {
     required this.value,
     this.icon = const Icon(
       Icons.expand_more,
-      size: 16,
+      size: 10,
     ),
     this.width,
     Key? key,
@@ -62,9 +60,9 @@ class _StockholmDropdownButtonState<T>
       child: StockholmButton(
         padding: EdgeInsets.only(
           left: 12,
-          right: widget.icon == null ? 12 : 8,
-          top: 4,
-          bottom: 4,
+          right: widget.icon == null ? 8 : 4,
+          top: 0,
+          bottom: 0,
         ),
         onPressed: () {
           var bounds = getGlobalBoundsForContext(context);

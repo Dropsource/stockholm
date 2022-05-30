@@ -35,11 +35,12 @@ class StockholmMenu extends StatelessWidget {
           border: Border.all(color: Theme.of(context).dividerColor)),
       padding: const EdgeInsets.all(_menuPadding),
       child: IntrinsicWidth(
-        child: Column(
+        child: SingleChildScrollView(
+            child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: items,
-        ),
+        )),
       ),
     );
   }

@@ -57,9 +57,10 @@ class StockholmButton extends StatelessWidget {
           child: child,
         ),
       ),
-      elevation: 2,
+      elevation: 0,
       minWidth: 32,
       padding: EdgeInsets.zero,
+      height: 26,
     );
   }
 }
