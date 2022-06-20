@@ -6,6 +6,7 @@ class StockholmDropdownButton<T> extends StatefulWidget {
     required this.items,
     required this.onChanged,
     required this.value,
+    this.skipTraversal = false,
     this.icon = const Icon(
       Icons.expand_more,
       size: 10,
@@ -19,6 +20,7 @@ class StockholmDropdownButton<T> extends StatefulWidget {
   final T value;
   final Widget? icon;
   final double? width;
+  final bool skipTraversal;
 
   @override
   _StockholmDropdownButtonState createState() =>
@@ -27,6 +29,15 @@ class StockholmDropdownButton<T> extends StatefulWidget {
 
 class _StockholmDropdownButtonState<T>
     extends State<StockholmDropdownButton<T>> {
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _focusNode = FocusNode(skipTraversal: widget.skipTraversal);
+  }
+
   @override
   Widget build(BuildContext context) {
     var items = widget.items
@@ -64,6 +75,7 @@ class _StockholmDropdownButtonState<T>
           top: 0,
           bottom: 0,
         ),
+        focusNode: _focusNode,
         onPressed: () {
           var bounds = getGlobalBoundsForContext(context);
           showStockholmMenu(
@@ -90,6 +102,12 @@ class _StockholmDropdownButtonState<T>
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 }
 

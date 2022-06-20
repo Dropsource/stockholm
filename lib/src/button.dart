@@ -18,7 +18,9 @@ class StockholmButton extends StatelessWidget {
     this.large = false,
     this.important = false,
     this.enabled = true,
+    this.focusNode,
   }) : super(key: key);
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class StockholmButton extends StatelessWidget {
     }
 
     return MaterialButton(
-      // textTheme: textTheme,
+      focusNode: focusNode,
       color: important
           ? theme.colorScheme.primary
           : theme.buttonTheme.colorScheme!.surface,
